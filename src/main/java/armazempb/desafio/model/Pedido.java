@@ -2,47 +2,44 @@ package armazempb.desafio.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido {
-	private @Id @GeneratedValue(strategy = GenerationType.AUTO) Integer id;
-	private Integer id_cliente;
-	private Double valor_total;
-	private Date data_pedido;
-
-	public Integer getId() {
-		return id;
+	private @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "id") Long idPedido;
+	private @OneToOne(cascade = CascadeType.ALL) @JoinColumn(name = "id_cliente", referencedColumnName = "id") Cliente cliente;
+	private @Column(name = "valor_total") Double valorTotal;
+	private @Column(name = "data_pedido") Date dataPedido;
+	
+	public Long getIdPedido() {
+		return idPedido;
 	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdPedido(Long idPedido) {
+		this.idPedido = idPedido;
 	}
-
-	public Integer getId_cliente() {
-		return id_cliente;
+	public Cliente getCliente() {
+		return cliente;
 	}
-
-	public void setId_cliente(Integer id_cliente) {
-		this.id_cliente = id_cliente;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
-
-	public Double getValor_total() {
-		return valor_total;
+	public Double getValorTotal() {
+		return valorTotal;
 	}
-
-	public void setValor_total(Double valor_total) {
-		this.valor_total = valor_total;
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
 	}
-
-	public Date getData_pedido() {
-		return data_pedido;
+	public Date getDataPedido() {
+		return dataPedido;
 	}
-
-	public void setData_pedido(Date data_pedido) {
-		this.data_pedido = data_pedido;
+	public void setDataPedido(Date dataPedido) {
+		this.dataPedido = dataPedido;
 	}
 }

@@ -2,6 +2,7 @@ package armazempb.desafio.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,49 +10,40 @@ import javax.persistence.Id;
 
 @Entity
 public class Cliente {
-	private @Id @GeneratedValue(strategy = GenerationType.AUTO) Integer id;
-	private String nome;
-	private String cpf;
-	private String endereco;
-	private Date data_nascimento;
-
-	public Integer getId() {
-		return id;
+	private @Id @GeneratedValue(strategy = GenerationType.AUTO) @Column(name = "id") Long idCliente;
+	private @Column(name = "nome") String nome;
+	private @Column(name = "cpf") String cpf;
+	private @Column(name = "endereco") String endereco;
+	private @Column(name = "data_nascimento") Date dataNascimento;
+	
+	public Long getIdCliente() {
+		return idCliente;
 	}
-
-	public void setId(Integer id) {
-		this.id = id;
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
 	}
-
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	public String getCpf() {
 		return cpf;
 	}
-
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-
 	public String getEndereco() {
 		return endereco;
 	}
-
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-
-	public Date getData_nascimento() {
-		return data_nascimento;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
-
-	public void setData_nascimento(Date data_nascimento) {
-		this.data_nascimento = data_nascimento;
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 }
